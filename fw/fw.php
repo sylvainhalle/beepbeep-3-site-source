@@ -1,12 +1,12 @@
 <?php
 /**************************************************************************
     Fantastic Windmill
-    Copyright (C) 2013  Sylvain Hallé
+    Copyright (C) 2013-2016  Sylvain Hallé
     
     A simple static web site generator for PHP programmers.
     
     Author:  Sylvain Hallé
-    Date:    2013-01-26
+    Date:    2016-10-18
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -23,10 +23,10 @@
 **************************************************************************/
 
 // Version string (used for version tracking)
-define("VERSION_STRING", "1.0.3");
+define("VERSION_STRING", "1.0.4");
 $HELLO_MSG = "Fantastic Windmill v".
   VERSION_STRING." - A static web site generator for PHP programmers\n".
-  "(C) 2013 Sylvain Hallé, Université du Québec à Chicoutimi";
+  "(C) 2013-2016 Sylvain Hallé, Université du Québec à Chicoutimi";
 
 $usage_string = <<<EOD
 
@@ -228,7 +228,8 @@ foreach ($pages as $page)
   $page_included_files = get_included_files();
   $page_included_files = array_diff($page_included_files, $base_included_files);
   $page->addIncludedFiles($page_included_files);
-  file_put_contents("/tmp/sample-page.html", $html_page);
+  
+  //file_put_contents("/tmp/sample-page.html", $html_page);
   @$page->parse($html_page);
   
   // Rebase all absolute page URLs with respect to the document root

@@ -1,5 +1,5 @@
 <?php
-$sidebar_filename = $rendering->getContentDir()."/".$page->data["slug"].".sidebar.md";
+$sidebar_filename = $pages->getPath()."/".$page->data["slug"].".sidebar.md";
 if (file_exists($sidebar_filename))
   include($sidebar_filename);
 ?>
