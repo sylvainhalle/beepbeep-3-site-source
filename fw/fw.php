@@ -1,12 +1,11 @@
 <?php
 /**************************************************************************
     Fantastic Windmill
-    Copyright (C) 2013  Sylvain Hallé
+    Copyright (C) 2013-2016  Sylvain Hallé
     
     A simple static web site generator for PHP programmers.
     
     Author:  Sylvain Hallé
-    Date:    2013-01-26
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -268,11 +267,13 @@ foreach ($pages as $page)
   }
   else
   {
-    spit("Writing to $output_filename:", 1);
+    spit("Writing to $output_filename", 1);
     if ($regenerate === Page::$FILE_MODIFIED)
-      spitln(" input file more recent than target file", 1);
+      spitln(": input file more recent than target file", 1);
+    elseif ($regenerate === Page::$FILE_DOES_NOT_EXIST)
+      spitln(": target file does not exist", 1);
     else
-      spitln(" target file does not exist", 1);
+      spitln("", 1);
   }
   make_path($output_filename, true);
   $contents = $page->dom->saveHTML();

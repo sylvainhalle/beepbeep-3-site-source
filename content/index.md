@@ -1,6 +1,7 @@
 Home
 ====
 
+
 <!-- Banner -->
 <div id="banner-wrapper">
 	<div id="banner" class="box container">
@@ -12,12 +13,13 @@ Home
 			<div class="5u 12u(medium)">
 				<ul>
 					<li><a href="get.html" class="button big icon fa-arrow-circle-right">Download it</a></li>
-					<!--<li><a href="#" class="button alt big icon fa-question-circle">More info</a></li>-->
+					
 				</ul>
 			</div>
 		</div>
 	</div>
 </div>
+
 
 <!-- Features -->
 <!--
@@ -144,7 +146,8 @@ Home
 		</div>
 	</div>
 </div>
-<!-- :indentSize=2:tabSize=2: -->
+
+<!-- :mode=markdown:wrap=none: -->
 ---
 slug: home
 lang: en
