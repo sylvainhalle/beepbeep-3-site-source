@@ -1,5 +1,6 @@
 <?php
-$sidebar_filename = $page->getPath()."/".$page->data["slug"].".sidebar.md";
+$sidebar_filename = $page->getUrl()."/".$page->data["slug"].".sidebar.md";
+echo "FILENAME: $sidebar_filename\n";
 if (file_exists($sidebar_filename))
   include($sidebar_filename);
 ?>

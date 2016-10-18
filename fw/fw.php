@@ -1,12 +1,12 @@
 <?php
 /**************************************************************************
     Fantastic Windmill
-    Copyright (C) 2013-2016  Sylvain Hallé
+    Copyright (C) 2013  Sylvain Hallé
     
     A simple static web site generator for PHP programmers.
     
     Author:  Sylvain Hallé
-    Date:    2016-10-18
+    Date:    2013-01-26
     
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -158,7 +158,7 @@ foreach ($file_list as $file)
   }
   
   // Is there a YAML declaration at the end of the file?
-  preg_match("/^---\n.*$/ms", $contents, $matches, PREG_OFFSET_CAPTURE);
+  preg_match("/^---[\\r\\n].*$/ms", $contents, $matches, PREG_OFFSET_CAPTURE);
   if (count($matches) > 0)
   {
     $yaml_contents = $matches[0][0];
@@ -181,7 +181,7 @@ foreach ($file_list as $file)
   @$page->parse($html_contents);
   $nodelist = $page->dom->getElementsByTagName("h1");
   $heading1 = $nodelist->item(0);
-  if (!isset($page->data["title"]))
+  if (isset($heading1) && !isset($page->data["title"]))
     $page->data["title"] = $heading1->nodeValue;
   if (!isset($page->data["abstract"]))
     turn_blockquote_into_abstract($page);
@@ -228,8 +228,6 @@ foreach ($pages as $page)
   $page_included_files = get_included_files();
   $page_included_files = array_diff($page_included_files, $base_included_files);
   $page->addIncludedFiles($page_included_files);
-  
-  //file_put_contents("/tmp/sample-page.html", $html_page);
   @$page->parse($html_page);
   
   // Rebase all absolute page URLs with respect to the document root
