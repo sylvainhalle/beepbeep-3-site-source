@@ -134,7 +134,7 @@ Is it five minutes yet? So far you've learned:
 You're now ready to learn more about BeepBeep.
 
 - See what processors are available, and how you can use them in ESQL queries
-- [Create your own processor](/guide/custom.html) in a few lines of code, and [extend the ESQL grammar](/guide/extend.html) to use it in your own queries
+- [Create your own processor](/guide/custom-processor.html) in a few lines of code, and [extend the ESQL grammar](/guide/extend-esql.html) to use it in your own queries
 
 
 <!-- :wrap=soft: -->

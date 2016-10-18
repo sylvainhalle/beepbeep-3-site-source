@@ -6,9 +6,11 @@ Under construction!
 ## Table of Contents
 
 - [Introduction](intro.html)
-- Extending BeepBeep
-  - [Creating a custom processor](custom.html)
-  - [Extending the ESQL language](extend.html)
+- [Building BeepBeep in Eclipse](building-eclipse.html)
+- [Extending BeepBeep](extend.html)
+  - [Creating a custom processor](custom-processor.html)
+  - [Extending the ESQL language](extend-esql.html)
+  - Wrapping it up: creating a palette
 
 ---
 slug: custom

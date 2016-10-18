@@ -1,7 +1,7 @@
 Create your own processor
 =========================
 
-[Home](index.html) &gt; Extending BeepBeep &gt; Custom processors
+[Home](index.html) &gt; [Extending BeepBeep](extend.html)
 
 What if none of the processors suits your needs? If you use Java, BeepBeep allows you to create your own, which you can then compose with existing processors. You can do so using **no more than 4 lines of boilerplate code**. (If you're willing to write about 10 more lines, you can also [integrate your processor into the ESQL language](/extend.html).)
 

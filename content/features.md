@@ -21,9 +21,9 @@ Therefore, there are large parts of it (SELECT, WHERE, etc.) that you already kn
 
 ## Extensible
 
-In Complex Event Processing, there is no "one size fits all", and no one cannot foresee all the possible uses of a tool. Instead of cramming functions into a language that remains frozen, BeepBeep was designed from the start to be extended by users. Creating your own processors, which you can combine like any other, takes [five lines of boilerplate code](/custom.html), and can be learned in minutes. This is easier than for any other CEP engine.
+In Complex Event Processing, there is no "one size fits all", and no one cannot foresee all the possible uses of a tool. Instead of cramming functions into a language that remains frozen, BeepBeep was designed from the start to be extended by users. Creating your own processors, which you can combine like any other, takes [five lines of boilerplate code](/custom-processor.html), and can be learned in minutes. This is easier than for any other CEP engine.
 
-Most importantly, you can also [define your own ESQL syntactical rules](/extend.html) for the processors you create (again in less than 10 lines of code), complete with arguments of any type, so that your processors can be used within ESQL expressions. This very flexible mechanism is unique to all CEP engines, and makes it possible to create extension packages that provide your own **domain-specific language (DSL)**.
+Most importantly, you can also [define your own ESQL syntactical rules](/extend-esql.html) for the processors you create (again in less than 10 lines of code), complete with arguments of any type, so that your processors can be used within ESQL expressions. This very flexible mechanism is unique to all CEP engines, and makes it possible to create extension packages that provide your own **domain-specific language (DSL)**.
 
 ## Lightweight
 

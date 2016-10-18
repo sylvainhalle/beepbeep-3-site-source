@@ -14,6 +14,6 @@
 <section>
 <h3>See also</h3>
 <ul class="style2">
-	<li><a href="/extend.html">Extend the ESQL language for your new processors</a></li>
+	<li><a href="extend-esql.html">Extend the ESQL language for your new processors</a></li>
 </ul>
 </section>
