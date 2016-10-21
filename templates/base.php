@@ -19,6 +19,9 @@ include_once("user-defined.php");
 		<!--[if lte IE 8]><link rel="stylesheet" href="/assets/css/ie8.css" /><![endif]-->
 		<link rel="stylesheet" href="/assets/css/custom.css" />
 		<meta name="author" content="<?php echo $page->data["site"]["author"]; ?>" />
+		<link rel="stylesheet" href="/assets/js/styles/default.css" />
+		<script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 	</head>
 	<body class="no-sidebar">
 		<div id="page-wrapper">
