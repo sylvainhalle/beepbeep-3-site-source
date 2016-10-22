@@ -15,14 +15,17 @@ Let us take as an example the function {@link jdc:ca.uqac.lif.cep.numbers.Additi
 
 !!SNIP(Examples/src/functions/AddNumbers.java)
 
-First, we get a refernce to an instance of the `Addition` object. The `Addition` class is a *singleton*: there is only a single instance of it, a reference to which is given by the static field `instance`, and all uses of the function should be done by using that instance.
+First, we get a reference to an instance of the `Addition` object. The `Addition` class is a *singleton*: there is only a single instance of it, a reference to which is given by the static field `instance`, and all uses of the function should be done by using that instance. We then create an array of two objects, the numbers 2 and 3, and pass this array to the addition function through the `evaluate()` method. The method returns yet another array, containing the result of evaluating the function. Most functions return a single value, and so the resulting array is of size 1. The next instruction fetches the first (and only) element of the result array and casts it as a `Float`.
+
+## <a name="functiontree">Composing Functions</a>
 
 
 !!SNIP(Examples/src/functions/Interval.java)
 
 <!-- :wrap=soft: -->
 ---
-slug: custom
+slug: functions
 section-slug: doc
 lang: en
+template: right-sidebar.php
 ...
