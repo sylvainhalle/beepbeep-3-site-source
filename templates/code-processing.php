@@ -57,11 +57,18 @@ function fix_indentation($s)
  */
 function resolve_javadoc($s)
 {
-  preg_match_all("/(jd.:.*?)([\\]\\)\\\"])/", $s, $matches, PREG_SET_ORDER);
+  preg_match_all("/\\{@link\\s*(jd.:.*?)(\\s+.*?){0,1}\\}/", $s, $matches, PREG_SET_ORDER);
   foreach ($matches as $match)
   {
     $url = get_javadoc_url($match[1]);
-    $s = str_replace($match[0], $url.$match[2], $s);
+    if (isset($match[2]) && !empty($match[2]))
+    {
+      $s = str_replace($match[0], "<a href=\"$url\">".$match[2]."</a>", $s);
+    }
+    else
+    {
+      $s = str_replace($match[0], "<a href=\"$url\">".$match[1]."</a>", $s);
+    }
   }
   return $s;
 }
@@ -92,12 +99,12 @@ function get_javadoc_url($string)
       break;
     case "jdm:":
       // Method
-      $parts = explode(".", $right_part);
+      $big_parts = explode("#", $right_part);
+      $parts = explode(".", $big_parts[0]);
       $last_part = $parts[count($parts) - 1];
       unset($parts[count($parts) - 1]);
-      $last_part_parts = explode("#", $last_part);
       $path = implode("/", $parts);
-      $url = $javadoc_root.$path."/".$last_part_parts[0].".html#".$last_part_parts[1];
+      $url = $javadoc_root.$path."/".$last_part.".html#".$big_parts[1];
       break;
   }
   return $url;
