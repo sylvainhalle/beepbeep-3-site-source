@@ -10,7 +10,8 @@ User Guide
 ### [Basic Concepts](concepts.html)
 
 - [Functions](functions.html)
-- [Processors](processors.html)
+- [Processors: Basic Concepts](processors.html)
+- [Built-in Processors](built-in-processors.html)
 
 ### [Extending BeepBeep](extend.html)</a>
 

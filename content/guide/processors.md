@@ -1,7 +1,7 @@
-Processors
-==========
+Processors: Basic Concepts
+==========================
 
-[Home](index.html)
+[Home](index.html) &gt; [Basic Concepts](concepts.html)
 
 A *processor* is an object that takes one or more *event traces* as its input, and and returns one or more *event traces* as its output. A processor is a stateful device: for a given input, its output may depend on events received in the past.
 
@@ -68,12 +68,29 @@ This time, we create *two* sources of numbers. We intend to connect these two so
 	The event is: 9.0
 	...
 
-## <a name="synchronous">Synchronous processing</a>
-
 The previous example shows that the output of `add` seems to be the pairwise sum of events from `source1` and `source2`. Indeed, 2+3=5, 7+1=8, 1+4=5, etc. This is indeed exactly the case. When a processor has an input arity of 2 or more, it processes its inputs in batches we call **fronts**. A *front* is a set of events in identical positions in each input trace. Hence, the pair of events 2 and 3 corresponds to the front at position 0; the pair 7 and 1 corresponds to the front at position 1, and so on.
 
-When a processor has an arity of 2 or more, the processing of its input is done *synchronously*. This means that a computation step will be performed if and only if an event can be consumed from each input trace.
+When a processor has an arity of 2 or more, the processing of its input is done *synchronously*. This means that a computation step will be performed if and only if a new event can be consumed from each input trace. More on that later.
 
+## <a name="mismatch">When types do not match</a>
+
+We said earlier that any processor can be piped to any other, *provided that they have matching types*. The following code example shows what happens when types do not match:
+
+{@snipm Examples/src/queries/IncorrectPiping.java}{SNIP}
+
+The problem lies in the fact that processor `av` sends out events of type `Number` as its output, while processor `neg` expects events of type `Boolean` as its input. Since the former cannot be converted into the latter, the call to `connect()` will throw an exception similar to this one:
+
+	Exception in thread "main" ca.uqac.lif.cep.Connector$IncompatibleTypesException:
+	Cannot connect output 0 of ABS to input 0 of !: incompatible types
+		at ca.uqac.lif.cep.Connector.checkForException(Connector.java:268)
+		at ca.uqac.lif.cep.Connector.connect(Connector.java:123)
+		at ca.uqac.lif.cep.Connector.connect(Connector.java:191)
+		at queries.IncorrectPiping.main(IncorrectPiping.java:43)
+
+Here "ABS" and "!" are the symbols defined for `av` and `neg`, respectively.
+
+A processor can be queried for the types it accepts for input number *n* by using the {@link jdm:ca.uqac.lif.cep.Processor#getInputType(int) getInputType()}; ditto for the type produced at output number *n* with {@link jdm:ca.uqac.lif.cep.Processor#getOutputType(int) getOutputType()}.
+		
 ## <a name="class">The <code>Processor</code> class</a>
 
 Processors in BeepBeep all descend from the abstract class {@link jdc:ca.uqac.lif.cep.Processor Processor}, which provides a few common functionalities, such as obtaining a reference to the n-th input or output, getting the type of the n-th input or output, etc.
