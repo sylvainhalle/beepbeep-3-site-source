@@ -23,6 +23,36 @@ function get_inner_html( $node )
   return $innerHTML;
 }
 
+function create_sidebar($headings_list)
+{
+  $out = "";
+  $out .= "<section>\n<h3>In this page</h3>\n";
+  $out .= "<ul class=\style2\">\n";
+  foreach ($headings_list as $h)
+  {
+    $out .= "<li><a href=\"#".$h[1]."\">".$h[0]."</a></li>\n";
+  }
+  $out .= "</ul>\n</section>";
+  return $out;
+}
+
+// Extracts all headings of level 2 and their surrounding anchor
+function extract_headers($page)
+{
+  $heading_list = array();
+  $headings = $page->dom->getElementsByTagName("h2");
+  foreach ($headings as $heading)
+  {
+    $title = $heading->nodeValue;
+    $a = $heading->getElementsByTagName("a")->item(0);
+    $link = $a->attributes->getNamedItem("name");
+    if ($link !== null)
+    {
+      $heading_list[] = array($title, $link->nodeValue);
+    }
+  }
+  return $heading_list;
+}
 
 // User-defined array that maps language codes to language names
 $langnames = array("fr" => "Lire en français", "en" => "Read in English");

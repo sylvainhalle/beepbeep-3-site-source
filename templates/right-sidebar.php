@@ -60,7 +60,11 @@ include_once("user-defined.php");
 				<div id="sidebar">
 
 					<!-- Sidebar -->
-						<?php include("sidebar-bar.php"); ?>
+						<?php
+						$headings_list = extract_headers($page);
+						echo create_sidebar($headings_list);
+						//include("sidebar-bar.php"); 
+						?>
 
 				</div>
 			</div>

@@ -7,7 +7,7 @@ Under construction!
 
 - [Introduction](intro.html)
 - [Building BeepBeep in Eclipse](building-eclipse.html)
-- [Functions}(functions.html)
+- [Functions](functions.html)
 - [Extending BeepBeep](extend.html)
   - [Creating a custom processor](custom-processor.html)
   - [Extending the ESQL language](extend-esql.html)
