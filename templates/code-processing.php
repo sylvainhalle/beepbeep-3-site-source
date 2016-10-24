@@ -1,8 +1,8 @@
 <?php
 
 $javadoc_root = "http://liflab.github.io/beepbeep-3/javadoc/";
-//$source_location = "/home/Sylvain/Workspaces/beepbeep-3/Source/Examples/src/";
-$source_location = "C:/Users/Sylvain/.babun/cygwin/home/Sylvain/Workspaces/beepbeep-3/";
+$source_location = "/home/sylvain/Workspaces/beepbeep-3/";
+//$source_location = "C:/Users/Sylvain/.babun/cygwin/home/Sylvain/Workspaces/beepbeep-3/";
 $github_source_location = "https://github.com/liflab/beepbeep-3/blob/master/";
 
 function insert_code_snippets($s)
@@ -26,7 +26,7 @@ function resolve_snipm($s)
       $line_nb = preg_match_line("/\\/\\/\\s*".$match[2]."/s", $snip_content);
       preg_match("/\\/\\/\\s*".$match[2]."(.*?)\\/\\/\\s*".$match[2]."/ms", $snip_content, $snip_matches);
       $contents = "<pre><code>".fix_indentation($snip_matches[1])."</code></pre>\n";
-      $contents .= "<a class=\"code-ref\" href=\"".$github_source_location.$match[1]."#L".$line_nb."\"><span>[Code on GitHub]</span></a>\n";
+      $contents .= "<a class=\"code-ref\" href=\"".$github_source_location.$match[1]."#L".($line_nb + 1)."\"><span>[Code on GitHub]</span></a>\n";
       $s = str_replace($match[0], $contents, $s);
     }
     else
@@ -75,7 +75,7 @@ function resolve_snips($s)
     $snip_content = file_get_contents($filename);
     list($structured_content, $line_nb) = extract_structured($snip_content, $match[2]);
     $contents = "<pre><code>".fix_indentation($structured_content)."</code></pre>\n";
-    $contents .= "<a class=\"code-ref\" href=\"".$github_source_location.$match[1]."#L".$line_nb."\"><span>[Code on GitHub]</span></a>\n";
+    $contents .= "<a class=\"code-ref\" href=\"".$github_source_location.$match[1]."#L".($line_nb + 1)."\"><span>[Code on GitHub]</span></a>\n";
     $s = str_replace($match[0], $contents, $s);
   }
   return $s;

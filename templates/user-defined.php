@@ -45,6 +45,8 @@ function extract_headers($page)
   {
     $title = $heading->nodeValue;
     $a = $heading->getElementsByTagName("a")->item(0);
+    if ($a == null)
+      continue;
     $link = $a->attributes->getNamedItem("name");
     if ($link !== null)
     {

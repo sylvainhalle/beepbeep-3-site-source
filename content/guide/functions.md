@@ -61,11 +61,13 @@ The input arity of a function tree can be greater than one. For example, the fol
 
 {@snipm Examples/src/functions/Interval.java}{SNIP}
 
-The function returns true if *x* is between *y* and *z*, and false otherwise.
+The function returns true if *x* is between *y* and *z*, and false otherwise. This function, too, can be called with `evaluate()`, although with three input values:
+
+{@snipm Examples/src/functions/Interval.java}{SNAP}
 
 ## <a name="class">Creating a new class</a>
 
-If you intend on using a `FunctionTree` in multiple queries, it may be desirable to encapsulate it within a class you can then instantiate. To this end, you can create a new class that inherits from {@link jdc:ca.uqac.lif.cep.functions.PassthroughFunction PassthroughFunction}. This class requires you to implement a single method called {@link jdm:ca.uqac.lif.cep.functions.PassthroughFunction#getFunction() getFunction()}, which can return any object of type `Function` --including a `FunctionTree` that you instantiate programmatically:
+If you intend on using a `FunctionTree` in multiple queries, it may be desirable to encapsulate it within a class you can instantiate multiple times. To this end, you can create a new class that inherits from {@link jdc:ca.uqac.lif.cep.functions.PassthroughFunction PassthroughFunction}. This class requires you to implement a single method called {@link jdm:ca.uqac.lif.cep.functions.PassthroughFunction#getFunction() getFunction()}, which can return any object of type `Function` --including a `FunctionTree` that you instantiate programmatically:
 
 {@snipm Examples/src/functions/Polynomial.java}{SNIP}
 
@@ -75,26 +77,9 @@ If you intend on using a `FunctionTree` in multiple queries, it may be desirable
 
 ## <a name="custom">Creating custom functions</a>
 
-In the case where none of the available functions (or a composition thereof) suits your needs, BeepBeep also offers the possibility to create your own `Function` objects, composed of arbitrary Java code.
-
-If your intended function is 1:1 or 2:1 (that is, it has an input arity of 1 or 2, and an output arity of 1), the easiest way is to create a new class that extends either {@link jdc:ca.uqac.lif.cep.functions.UnaryFunction UnaryFunction} or {@link jdc:ca.uqac.lif.cep.functions.BinaryFunction BinaryFunction}. These classes take care of most of the housekeeping associated to functions, and require you to simply implement a method called `getValue()`, responsible for computing the output, given some input(s). In this method, you can write whatever Java code you want.
-
-As an example, let us create a function that, given a number, returns whether this number is prime. It is therefore a 1:1 function, so we will create a class that extends `UnaryFunction`.
-
-<pre><code>public class IsPrime extends UnaryFunction&lt;Number,Boolean&gt;
-{
-}
-</code>
-</pre>
-
-As you can see, you must also declare the input and output type for the function; here, the function accepts a `Number` and returns a `Boolean`. These types must also be reflected in the function's constructor, where you must call the superclass constructor and pass it a `Class` instance
-
-{@snips Examples/src/functions/IsPrime.java}{private IsPrime()}
+In the case where none of the available functions (or a composition thereof) suits your needs, BeepBeep also offers the possibility to create your own `Function` objects, composed of arbitrary Java code. See the section [creating custom functions](custom-functions.html).
 
 <!-- :wrap=soft: -->
 ---
 slug: functions
-section-slug: doc
-lang: en
-template: right-sidebar.php
 ...

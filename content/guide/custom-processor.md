@@ -197,11 +197,10 @@ public class MyMax extends SingleProcessor {
     }
   }
 }
-</code></pre>
+</code>
+</pre>
 
 <!-- :wrap=soft: -->
 ---
 slug: custom
-section-slug: doc
-lang: en
 ...
